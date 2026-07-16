@@ -1,32 +1,64 @@
-# React + TypeScript + Vite
+# HRMS UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+The frontend for a Human Resource Management System, built with **React 19**, **TypeScript**, and **Vite**. It provides the dashboard, employee directory, and form workflows on top of the [Hrms-API](https://github.com/shammichalas/Hrms-API) Spring Boot backend.
 
-Currently, two official plugins are available:
+## Why this project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Paired with Hrms-API to demonstrate a full-stack HRMS: a typed, tested API contract on the backend and a polished, animated dashboard experience on the frontend — including the cinematic scroll/motion work I focus on.
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19 + TypeScript + Vite 8** — app shell and build tooling
+- **React Router 7** — routing, including a protected-route layout for authenticated pages
+- **TanStack Query** — server-state fetching/caching against the HRMS API
+- **Axios** — HTTP client with request/response interceptors for JWT attachment and 401 handling
+- **React Hook Form + Zod** — typed form state and schema validation
+- **Tailwind CSS 4** — styling
+- **Framer Motion + Lenis** — page transitions and smooth scrolling
+- **Recharts** — dashboard charts
+- **Sonner** — toast notifications
 
-## Expanding the Oxlint configuration
+## Structure
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```
+src/
+├── components/
+│   ├── layout/     # DashboardLayout, Navbar, Sidebar, BottomNav, ProtectedRoute, PageTransition
+│   └── ui/          # Button, Card, Input, Modal, Table, ScrollAnimate, SplitHeading
+├── hooks/           # useScrollDirection
+├── pages/           # LoginPage, DashboardPage, EmployeesPage, FormsPage
+├── utils/           # api.ts (Axios instance + interceptors), cn.ts
+├── routes.tsx        # route tree, protected routes wrap the dashboard layout
+└── App.tsx           # Lenis smooth-scroll init, toast provider, router
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Notable patterns:
+- **`api.ts`** centralizes the Axios instance: attaches the JWT from local storage on every request, and clears auth state + redirects to `/login` on a `401` response.
+- **`ProtectedRoute`** gates the dashboard layout and its child routes (`/`, `/employees`, `/forms`) behind authentication, with `/login` left public.
+- **Lenis** is initialized once in `App.tsx` with a custom easing curve, driven by `requestAnimationFrame`, for the smooth-scroll feel across the app.
+
+## Running locally
+
+### Prerequisites
+- Node.js 18+
+- The [Hrms-API](https://github.com/shammichalas/Hrms-API) backend running on `http://localhost:8080` (the API base URL is currently hardcoded in `src/utils/api.ts`)
+
+### Install & run
+```bash
+npm install
+npm run dev
+```
+
+### Build
+```bash
+npm run build
+```
+
+### Lint
+```bash
+npm run lint
+```
+
+## Companion project
+
+The backend for this UI lives in [Hrms-API](https://github.com/shammichalas/Hrms-API) (Spring Boot, PostgreSQL, JWT auth).
