@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-display: 'Anton', 'Helvetica Neue', Arial, sans-serif;
+  --font-numbers: 'Bebas Neue', sans-serif;
+  
+  --color-bg-primary: #F8F9FA;
+  --color-surface-secondary: #FFFFFF;
+  --color-card-bg: rgba(0, 0, 0, 0.02);
+  --color-card-hover: rgba(0, 0, 0, 0.04);
+  --color-border-custom: rgba(0, 0, 0, 0.06);
+  --color-orange-primary: #FF7A00;
+  --color-orange-secondary: #FFB347;
+  --color-text-primary: #111111;
+  --color-text-secondary: rgba(0, 0, 0, 0.55);
+  --color-muted-custom: rgba(0, 0, 0, 0.35);
+  --color-success-custom: #00D26A;
+  --color-warning-custom: #FFB800;
+  --color-danger-custom: #FF4D4D;
+
+  --radius-card: 24px;
+  --radius-button: 999px;
+  --radius-input: 18px;
+  --radius-table: 20px;
+  --radius-modal: 28px;
+  
+  --shadow-premium: 0 20px 60px rgba(0, 0, 0, 0.06);
+  --shadow-orange-glow: 0 0 20px rgba(255, 122, 0, 0.08);
+  --shadow-orange-glow-hover: 0 0 35px rgba(255, 122, 0, 0.15);
+}
+
+/* Custom Base layer styles */
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Utilities */
+@utility glass-morphic {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+@utility glass-morphic-hover {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Scrollbar setup */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F8F9FA;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Lenis smooth scrolling rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
