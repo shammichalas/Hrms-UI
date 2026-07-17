@@ -5,6 +5,7 @@ import { EmployeesPage } from './pages/EmployeesPage'
 import { FormsPage } from './pages/FormsPage'
 import { ProtectedRoute } from './components/layout/ProtectedRoute'
 import { LoginPage } from './pages/LoginPage'
+import { NotFoundPage } from './pages/NotFoundPage'
 
 export const router = createBrowserRouter([
   {
@@ -33,5 +34,9 @@ export const router = createBrowserRouter([
         ]
       }
     ]
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />
   }
 ])

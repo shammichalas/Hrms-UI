@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Bell, Search, Sun, User, LogOut } from 'lucide-react'
 import { toast } from 'sonner'
+import { useNavigate } from 'react-router-dom'
 
 interface UserProfile {
   firstName: string
@@ -12,6 +13,7 @@ interface UserProfile {
 }
 
 export const Navbar: React.FC = () => {
+  const navigate = useNavigate()
   const [profile, setProfile] = useState<UserProfile | null>(null)
 
   useEffect(() => {
@@ -41,7 +43,7 @@ export const Navbar: React.FC = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('user')
     toast.success('Logged out successfully')
-    window.location.href = '/login'
+    navigate('/login')
   }
 
   const fullName = profile ? `${profile.firstName} ${profile.lastName}` : 'System User'
