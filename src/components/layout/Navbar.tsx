@@ -48,7 +48,17 @@ export const Navbar: React.FC = () => {
   const displayRole = profile ? (profile.jobTitle || profile.role) : 'Guest'
 
   return (
-    <header className="sticky top-0 z-30 w-full bg-bg-primary/45 border-b border-b-border-custom backdrop-blur-md px-6 py-4 flex items-center justify-between select-none">
+    <header className="sticky top-0 z-30 w-full bg-bg-primary/45 border-b border-b-border-custom backdrop-blur-md px-4 py-3 sm:px-6 sm:py-4 flex items-center justify-between select-none">
+      {/* Mobile Brand Logo */}
+      <div className="flex items-center space-x-2 md:hidden">
+        <div className="h-7 w-7 rounded-full bg-gradient-to-tr from-orange-primary to-orange-secondary flex items-center justify-center shadow-orange-glow flex-shrink-0">
+          <span className="text-white font-display text-[10px] font-bold">W</span>
+        </div>
+        <span className="text-text-primary font-sans font-bold tracking-wider text-[11px] uppercase">
+          WorkForHub
+        </span>
+      </div>
+
       {/* Search Bar Widget */}
       <div className="relative max-w-md w-full hidden sm:block">
         <span className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-muted-custom">
@@ -64,7 +74,7 @@ export const Navbar: React.FC = () => {
       </div>
 
       {/* Header Actions */}
-      <div className="flex items-center space-x-4 ml-auto">
+      <div className="flex items-center space-x-2 sm:space-x-4">
         {/* Search trigger on mobile */}
         <button
           onClick={triggerSearch}
@@ -74,7 +84,7 @@ export const Navbar: React.FC = () => {
         </button>
 
         {/* Theme Toggle (Light Editorial Luxury Locked Indicator) */}
-        <div className="flex items-center space-x-1.5 px-3 py-1 bg-black/[0.02] border border-border-custom rounded-full text-xs text-text-secondary select-none">
+        <div className="hidden sm:flex items-center space-x-1.5 px-3 py-1 bg-black/[0.02] border border-border-custom rounded-full text-xs text-text-secondary select-none">
           <Sun size={12} className="text-orange-primary animate-pulse" />
           <span>Light Editorial</span>
         </div>
