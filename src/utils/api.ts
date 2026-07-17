@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // Create axios instance with backend baseURL
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080',
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'https://hrms-api-apq9.onrender.com',
   headers: {
     'Content-Type': 'application/json',
   },
