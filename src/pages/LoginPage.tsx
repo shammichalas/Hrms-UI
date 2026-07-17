@@ -188,14 +188,6 @@ export const LoginPage: React.FC = () => {
                   {isLoading ? 'Verifying Credentials...' : 'Authenticate Console'}
                 </Button>
               </form>
-
-              {/* Demo Hint */}
-              <div className="mt-8 pt-6 border-t border-black/[0.04] text-center">
-                <p className="text-[11px] text-text-secondary font-sans leading-normal">
-                  Demo Credentials:<br />
-                  <span className="font-semibold text-text-primary">admin@company.com</span> / <span className="font-semibold text-text-primary">password</span>
-                </p>
-              </div>
             </CardContent>
           </Card>
         </motion.div>
