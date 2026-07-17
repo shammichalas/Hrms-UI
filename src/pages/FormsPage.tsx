@@ -57,7 +57,7 @@ export const FormsPage: React.FC = () => {
     let fieldsToValidate: any[] = []
     if (step === 1) fieldsToValidate = ['workspaceName', 'subdomain']
     if (step === 2) fieldsToValidate = ['fullName', 'teamSize']
-    
+
     const isValid = await trigger(fieldsToValidate)
     if (isValid) {
       setStep((s) => s + 1)
@@ -89,7 +89,7 @@ export const FormsPage: React.FC = () => {
   return (
     <PageTransition>
       <div className="max-w-xl mx-auto space-y-8 select-none">
-        
+
         {/* Title (Architectural Editorial Center) */}
         <ScrollAnimate delay={0.05} className="py-12 flex flex-col items-center justify-center text-center">
           <span className="font-sans font-semibold text-[11px] tracking-[0.22em] text-text-secondary uppercase mb-6">
@@ -115,20 +115,18 @@ export const FormsPage: React.FC = () => {
                 return (
                   <div key={s.number} className="flex items-center space-x-2">
                     <div
-                      className={`h-7 w-7 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-500 border ${
-                        isActive
+                      className={`h-7 w-7 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-500 border ${isActive
                           ? 'bg-orange-primary text-white border-orange-primary shadow-orange-glow'
                           : isCompleted
-                          ? 'bg-success-custom/20 text-success-custom border-success-custom/40'
-                          : 'bg-black/[0.01] text-text-secondary border-black/[0.06]'
-                      }`}
+                            ? 'bg-success-custom/20 text-success-custom border-success-custom/40'
+                            : 'bg-black/[0.01] text-text-secondary border-black/[0.06]'
+                        }`}
                     >
                       {isCompleted ? <CheckCircle2 size={14} /> : s.number}
                     </div>
                     <span
-                      className={`text-xs font-semibold hidden md:inline ${
-                        isActive ? 'text-white font-bold' : 'text-text-secondary'
-                      }`}
+                      className={`text-xs font-semibold hidden md:inline ${isActive ? 'text-white font-bold' : 'text-text-secondary'
+                        }`}
                     >
                       {s.label}
                     </span>
@@ -169,7 +167,7 @@ export const FormsPage: React.FC = () => {
               ) : (
                 /* Wizard Forms */
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                  
+
                   {step === 1 && (
                     <motion.div
                       key="step1"
@@ -184,24 +182,24 @@ export const FormsPage: React.FC = () => {
                         <CardTitle>Workspace details</CardTitle>
                         <CardDescription>Specify the corporate moniker and DNS settings.</CardDescription>
                       </CardHeader>
-                      
+
                       <Input
                         label="Workspace Name"
                         placeholder="e.g. Acme Corporation"
                         error={errors.workspaceName?.message}
                         {...register('workspaceName')}
                       />
-                      
-                      <div className="relative flex items-center">
+
+                      <div className="relative w-full">
                         <Input
                           label="Subdomain Prefix"
                           placeholder="e.g. acme-corp"
-                          className="pr-28"
+                          className="pr-32"
                           error={errors.subdomain?.message}
                           {...register('subdomain')}
                         />
-                        <span className="absolute right-5 top-5 text-xs text-text-secondary select-none">
-                          .antigravity.io
+                        <span className="absolute right-5 top-[18px] text-xs text-text-secondary select-none">
+                          .workforhub.io
                         </span>
                       </div>
                     </motion.div>
@@ -221,7 +219,7 @@ export const FormsPage: React.FC = () => {
                         <CardTitle>Owner Information</CardTitle>
                         <CardDescription>Tell us about the billing administrator.</CardDescription>
                       </CardHeader>
-                      
+
                       <Input
                         label="Administrator Full Name"
                         placeholder="e.g. Ada Lovelace"
@@ -258,7 +256,7 @@ export const FormsPage: React.FC = () => {
                         <CardTitle>Security Protocol</CardTitle>
                         <CardDescription>Create administrative access locks.</CardDescription>
                       </CardHeader>
-                      
+
                       <Input
                         label="Password"
                         type="password"

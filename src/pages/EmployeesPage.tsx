@@ -481,7 +481,7 @@ export const EmployeesPage: React.FC = () => {
               onChange={(e) => setCurrentEmployee({ ...currentEmployee, baseSalary: Number(e.target.value) })}
             />
 
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <div className="flex-1 flex flex-col">
                 <label className="text-xs text-text-secondary mb-1.5 ml-1">Department</label>
                 <select
@@ -568,7 +568,7 @@ export const EmployeesPage: React.FC = () => {
               onChange={(e) => setCurrentEmployee({ ...currentEmployee, baseSalary: Number(e.target.value) })}
             />
 
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <div className="flex-1 flex flex-col">
                 <label className="text-xs text-text-secondary mb-1.5 ml-1">Department</label>
                 <select
@@ -657,7 +657,7 @@ export const EmployeesPage: React.FC = () => {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'spring', stiffness: 280, damping: 28 }}
-                className="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white border-l border-border-custom shadow-premium p-8 flex flex-col z-10"
+                className="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white border-l border-border-custom shadow-premium p-6 sm:p-8 flex flex-col z-10"
               >
                 {/* Close handle */}
                 <div className="flex justify-between items-center mb-8 border-b border-border-custom pb-4">
