@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { LayoutDashboard, Users, FileText, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react'
 import { cn } from '../../utils/cn'
 
-export const Sidebar: React.FC = () => {
-  const [isExpanded, setIsExpanded] = useState(true)
+interface SidebarProps {
+  isExpanded: boolean
+  onToggle: () => void
+}
+
+export const Sidebar: React.FC<SidebarProps> = ({ isExpanded, onToggle }) => {
   const location = useLocation()
 
   const menuItems = [
@@ -33,7 +37,7 @@ export const Sidebar: React.FC = () => {
               transition={{ delay: 0.1 }}
               className="text-text-primary font-sans font-bold tracking-[0.22em] text-[10px] uppercase"
             >
-              Emp Dashboard
+              WorkForHub
             </motion.span>
           )}
         </div>
@@ -41,7 +45,7 @@ export const Sidebar: React.FC = () => {
         {/* Toggle Collapse Button */}
         {isExpanded && (
           <button
-            onClick={() => setIsExpanded(false)}
+            onClick={onToggle}
             className="p-1 rounded-full text-text-secondary hover:text-text-primary hover:bg-black/[0.03] transition-colors"
           >
             <ChevronLeft size={16} />
@@ -109,7 +113,7 @@ export const Sidebar: React.FC = () => {
       {/* Collapse Trigger for small sidebar */}
       {!isExpanded && (
         <button
-          onClick={() => setIsExpanded(true)}
+          onClick={onToggle}
           className="self-center p-2 rounded-full text-text-secondary hover:text-text-primary hover:bg-black/[0.03] transition-colors"
         >
           <ChevronRight size={18} />
@@ -119,7 +123,7 @@ export const Sidebar: React.FC = () => {
       {/* Sidebar Footer */}
       {isExpanded && (
         <div className="mt-auto p-2 border-t border-white/[0.05] text-[9px] uppercase font-bold tracking-[0.22em] text-muted-custom">
-          EMP DASHBOARD v1.0.0
+          WORKFORHUB v1.0.0
         </div>
       )}
     </motion.aside>

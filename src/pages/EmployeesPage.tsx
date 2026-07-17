@@ -314,8 +314,8 @@ export const EmployeesPage: React.FC = () => {
               <TableHeader>
                 <TableRow className="hover:bg-transparent bg-transparent border-none">
                   <TableHead>Member</TableHead>
-                  <TableHead>Role</TableHead>
-                  <TableHead>Department</TableHead>
+                  <TableHead className="hidden md:table-cell">Role</TableHead>
+                  <TableHead className="hidden sm:table-cell">Department</TableHead>
                   <TableHead>Status</TableHead>
                   <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
@@ -333,21 +333,30 @@ export const EmployeesPage: React.FC = () => {
                       {/* Name / Email */}
                       <TableCell>
                         <div className="flex items-center space-x-3">
-                          <div className="h-9 w-9 rounded-full bg-orange-primary/10 border border-orange-primary/30 flex items-center justify-center text-orange-primary font-bold text-xs">
+                          <div className="h-9 w-9 rounded-full bg-orange-primary/10 border border-orange-primary/30 flex items-center justify-center text-orange-primary font-bold text-xs flex-shrink-0">
                             {emp.name.charAt(0)}
                           </div>
                           <div>
                             <p className="font-semibold text-text-primary leading-none">{emp.name}</p>
                             <p className="text-xs text-text-secondary mt-1">{emp.email}</p>
+                            {/* Mobile inline badges for Role and Department */}
+                            <div className="flex flex-wrap gap-1.5 mt-1.5 md:hidden">
+                              <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-medium bg-black/[0.03] text-text-secondary">
+                                {emp.role}
+                              </span>
+                              <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] uppercase font-bold tracking-wider bg-orange-primary/10 text-orange-primary sm:hidden">
+                                {emp.department}
+                              </span>
+                            </div>
                           </div>
                         </div>
                       </TableCell>
                       {/* Role */}
-                      <TableCell>
+                      <TableCell className="hidden md:table-cell">
                         <span className="font-medium text-text-secondary">{emp.role}</span>
                       </TableCell>
                       {/* Department */}
-                      <TableCell>
+                      <TableCell className="hidden sm:table-cell">
                         <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider bg-black/[0.02] text-text-secondary">
                           {emp.department}
                         </span>

@@ -123,7 +123,7 @@ export const DashboardPage: React.FC = () => {
           <span className="font-sans font-semibold text-[11px] tracking-[0.22em] text-text-secondary uppercase mb-6">
             WORKSPACE INDEX
           </span>
-          <SplitHeading text="HRMS DASHBOARD" />
+          <SplitHeading text="WORKFORHUB DASHBOARD" />
           <p className="font-sans font-normal text-[15px] md:text-[17px] leading-[1.7] tracking-[0.02em] text-text-secondary max-w-[560px] mt-8 mx-auto">
             A premium, high-fidelity monitoring nexus displaying real-time employee attendance status, department structures, and monthly payroll details.
           </p>

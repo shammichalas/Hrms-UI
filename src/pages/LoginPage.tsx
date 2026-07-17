@@ -102,7 +102,7 @@ export const LoginPage: React.FC = () => {
             <Sparkles size={22} className="text-white" />
           </div>
           <span className="font-sans font-bold tracking-[0.25em] text-xs uppercase text-text-primary">
-            HRMS WORKSPACE
+            WORKFORHUB WORKSPACE
           </span>
         </motion.div>
 
